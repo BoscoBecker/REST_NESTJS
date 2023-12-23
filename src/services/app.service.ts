@@ -16,9 +16,9 @@ export class AppService {
     }
   }  
 
-  async getProdutoByID(id: string): Promise<any>{
+  async getProdutoByID(id: number): Promise<any>{
     try {
-      let firebirdService =  new FirebirdService();
+      let firebirdService =  new FirebirdService();      
       return await firebirdService.executeQuery('select * from produto where id = '+id);
       
     } catch (error) {
