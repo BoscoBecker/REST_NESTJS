@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { FirebirdService } from './firebird.service';
+import { FirebirdService } from '../connection/firebird.service';
 
 @Injectable()
 export class AppService {
@@ -16,6 +16,18 @@ export class AppService {
     }
   }  
 
+  async getProdutoByID(id: string): Promise<any>{
+    try {
+      let firebirdService =  new FirebirdService();
+      return await firebirdService.executeQuery('select * from produto where id = '+id);
+      
+    } catch (error) {
+      console.error(`Error executing query: ${error.message}`);      
+    }
+
+
+  }
+
   async getProdutosqtde(): Promise<any> {
     let firebirdService = new FirebirdService();
     try {
@@ -24,7 +36,5 @@ export class AppService {
       console.error(`Error executing query: ${error.message}`);
       
     }
-
-
   }
 }
