@@ -17,9 +17,13 @@ export class AppController {
   async GetProdutoByID(@Param('id',ParseIntPipe) id:number): Promise<any>{
     return await this.appService.getProdutoByID(id);
   }
-
   @Get('produtoqtde')
-  async GetProdutosqtde(): Promise<any>{
+  async GetProdutosQtde(): Promise<any>{
     return await this.appService.getProdutosqtde();
   }
+  @Get('produtosgrade')
+  async GetprodutosGrade(): Promise<any>{
+    return await this. appService.getprodutosGrade();
+  }
+
 }

@@ -16,25 +16,30 @@ export class AppService {
     }
   }  
 
-  async getProdutoByID(id: number): Promise<any>{
+  async getProdutoByID(id: number): Promise<any> {
     try {
       let firebirdService =  new FirebirdService();      
-      return await firebirdService.executeQuery('select * from produto where id = '+id);
-      
+      return await firebirdService.executeQuery('select * from produto where id = '+id);      
     } catch (error) {
       console.error(`Error executing query: ${error.message}`);      
     }
-
-
   }
 
   async getProdutosqtde(): Promise<any> {
-    let firebirdService = new FirebirdService();
     try {
+      let firebirdService = new FirebirdService();
       return await firebirdService.executeQuery('select * from produto_qtde');      
     } catch (error) {
-      console.error(`Error executing query: ${error.message}`);
-      
+      console.error(`Error executing query: ${error.message}`);      
+    }
+  }
+
+  async getprodutosGrade(): Promise<any>{
+    try {
+    let firebirdService =  new FirebirdService();
+    return await firebirdService.executeQuery('select * from produto_grade');      
+    } catch (error) {
+      console.error(`Error executing query: ${error.message}`);       
     }
   }
 }
